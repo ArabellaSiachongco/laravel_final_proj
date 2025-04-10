@@ -1,26 +1,27 @@
-<x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <!-- Dashboard Heading -->
-                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Admin Dashboard</h2>
+{{-- resources/views/welcome.blade.php
+@extends('layouts.app')
 
-                <!-- Dashboard Actions -->
-                <div class="space-y-6">
-                    <!-- Add New Product Button -->
-                    <a href="{{ route('products.create') }}"
-                       class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200">
-                        Add New Product
-                    </a>
+@section('content')
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-8">Product Catalog huhuhuh</h1>
 
-                    <!-- Manage Products Link -->
-                    <div>
-                        <a href="{{ route('products.index') }}" 
-                           class="inline-block text-lg text-blue-600 hover:text-blue-800 font-medium transition duration-200">
-                            Manage Products
-                        </a>
-                    </div>
+        @auth
+            <!-- Link to create a new product -->
+            <a href="{{ route('products.create') }}" class="bg-blue-500 text-white p-2 rounded mb-4 inline-block">
+                Add New Product
+            </a>
+        @endauth
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @forelse($products as $product)
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">{{ $product->name }}</h2>
+                    <p class="text-gray-600">${{ $product->price }}</p>
+                    <p class="text-sm mt-2 text-gray-700">{{ $product->description }}</p>
                 </div>
+            @empty
+                <p>No products available.</p>
+            @endforelse
         </div>
     </div>
-</x-app-layout>
+@endsection --}}

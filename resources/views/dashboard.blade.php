@@ -1,17 +1,27 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+{{-- resources/views/welcome.blade.php --}}
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-white dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+@section('content')
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-8 text-white">Product Catalog</h1>
+
+        @auth
+            <!-- Link to create a new product -->
+            <a href="{{ route('products.create') }}" class="bg-blue-500 text-white p-2 rounded mb-4 inline-block">
+                Add New Product
+            </a>
+        @endauth
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @forelse($products as $product)
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">{{ $product->name }}</h2>
+                    <p class="text-gray-600">${{ $product->price }}</p>
+                    <p class="text-sm mt-2 text-gray-700">{{ $product->description }}</p>
                 </div>
-            </div>
+            @empty
+                <p>No products available.</p>
+            @endforelse
         </div>
     </div>
-</x-app-layout>
+@endsection

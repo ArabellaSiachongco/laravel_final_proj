@@ -13,7 +13,8 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard route (redirect to home)
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $products = Product::latest()->get();
+        return view('dashboard', compact('products'));
     })->name('dashboard');
 
     // Profile routes

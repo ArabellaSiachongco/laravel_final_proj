@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-white shadow rounded-lg">
-        <h1 class="text-3xl font-semibold text-gray-800 mb-6">Product Catalog</h1>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-white shadow rounded-lg mt-10">
+        <h1 class="text-3xl font-semibold text-gray-800 mb-6">Product List</h1>
 
         <!-- Success Message -->
         @if(session('success'))

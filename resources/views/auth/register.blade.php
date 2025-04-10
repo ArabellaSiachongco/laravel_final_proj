@@ -1,7 +1,8 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <h1 class="text-3xl text-white text-center font-bold mb-8">"REGISTER TO THE GADGET STORE ADMIN"</h1><hr/><br/>
+        <!-- Session Status -->
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
